@@ -47,8 +47,6 @@ public class SistemaReserva extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         X = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
-        BtnPresu = new javax.swing.JPanel();
-        BtnPresupuesto = new javax.swing.JLabel();
         BtnConti = new javax.swing.JPanel();
         BtnContinua = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
@@ -93,37 +91,8 @@ public class SistemaReserva extends javax.swing.JFrame {
 
         getContentPane().add(X, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
-        BtnPresu.setBackground(new java.awt.Color(0, 156, 233));
 
-        BtnPresupuesto.setFont(new java.awt.Font("Roboto", 0, 24)); // NOI18N
-        BtnPresupuesto.setForeground(new java.awt.Color(255, 255, 255));
-        BtnPresupuesto.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        BtnPresupuesto.setText("Presupuesto");
-        BtnPresupuesto.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        BtnPresupuesto.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                BtnPresupuestoMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                BtnPresupuestoMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                BtnPresupuestoMouseExited(evt);
-            }
-        });
 
-        javax.swing.GroupLayout BtnPresuLayout = new javax.swing.GroupLayout(BtnPresu);
-        BtnPresu.setLayout(BtnPresuLayout);
-        BtnPresuLayout.setHorizontalGroup(
-            BtnPresuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(BtnPresupuesto, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
-        );
-        BtnPresuLayout.setVerticalGroup(
-            BtnPresuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(BtnPresupuesto, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
-        );
-
-        getContentPane().add(BtnPresu, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 500, 150, 40));
 
         BtnConti.setBackground(new java.awt.Color(0, 156, 233));
 
@@ -248,26 +217,28 @@ public class SistemaReserva extends javax.swing.JFrame {
         System.exit(0);
     }//GEN-LAST:event_jLabel7MouseClicked
 
-    private void BtnPresupuestoMouseEntered(java.awt.event.MouseEvent evt) {
-        BtnPresu.setBackground(new Color(0, 170, 240));
-    }
 
-    private void BtnPresupuestoMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BtnPresupuestoMouseExited
-        BtnPresu.setBackground(new Color(0, 156, 233));
-    }//GEN-LAST:event_BtnPresupuestoMouseExited
 
     private void BtnContinuaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BtnContinuaMouseEntered
-        BtnPresu.setBackground(new Color(0, 170, 240));
+        BtnConti.setBackground(new Color(0, 170, 240));
     }//GEN-LAST:event_BtnContinuaMouseEntered
 
     private void BtnContinuaMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BtnContinuaMouseExited
-        BtnPresu.setBackground(new Color(0, 156, 233));
+        BtnConti.setBackground(new Color(0, 156, 233));
     }//GEN-LAST:event_BtnContinuaMouseExited
 
     private void BtnContinuaMouseClicked(java.awt.event.MouseEvent evt) {
+
+        String fecha1 = TextCheckin.getText();
+        String fecha2 = TextCheckOut.getText();
+        LocalDate localDate = LocalDate.parse(fecha1);
+        LocalDate localDate2 = LocalDate.parse(fecha2);
+        long diasDiferencia = ChronoUnit.DAYS.between(localDate, localDate2);
+        this.reservacion = new Reserva(localDate, localDate2, new BigDecimal((diasDiferencia * 50)), formaPagoSeleccionada);
         RegistroHuesped in = new RegistroHuesped(reservacion);
         in.setVisible(true);
         this.dispose();
+        
     }
 
     private void BarraArribaMousePressed(java.awt.event.MouseEvent evt) {
@@ -282,21 +253,7 @@ public class SistemaReserva extends javax.swing.JFrame {
         repaint();
     }
 
-    private void BtnPresupuestoMouseClicked(java.awt.event.MouseEvent evt) {
 
-        String fecha1 = TextCheckin.getText();
-        String fecha2 = TextCheckOut.getText();
-
-        LocalDate localDate = LocalDate.parse(fecha1);
-        LocalDate localDate2 = LocalDate.parse(fecha2);
-
-        long diasDiferencia = ChronoUnit.DAYS.between(localDate, localDate2);
-
-        this.reservacion = new Reserva(localDate, localDate2, new BigDecimal((diasDiferencia * 50)), formaPagoSeleccionada);
-        ReservaDao conn = new ReservaDao();
-        conn.Guardar(reservacion);
-
-    }
 
     /**
      * @param args the command line arguments
@@ -329,8 +286,6 @@ public class SistemaReserva extends javax.swing.JFrame {
     private javax.swing.JPanel BarraArriba;
     private javax.swing.JPanel BtnConti;
     private javax.swing.JLabel BtnContinua;
-    private javax.swing.JPanel BtnPresu;
-    private javax.swing.JLabel BtnPresupuesto;
     private javax.swing.JComboBox<FormasPago> ComBoxFormaDePago;
     private javax.swing.JTextField TextCheckOut;
     private javax.swing.JTextField TextCheckin;

@@ -6,8 +6,12 @@ package com.mycompany.hotel;
 
 import java.awt.Color;
 import java.awt.event.ActionEvent;
+import java.math.BigDecimal;
+import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
 
 import Dao.HuespedDao;
+import Dao.ReservaDao;
 import Model.Huesped;
 import Model.Nacionalidad;
 import Model.Reserva;
@@ -58,7 +62,6 @@ public class RegistroHuesped extends javax.swing.JFrame {
         TextApellido = new javax.swing.JTextField();
         jSeparator5 = new javax.swing.JSeparator();
         jLabel11 = new javax.swing.JLabel();
-        NumeroReservacion = new javax.swing.JTextField();
         jSeparator6 = new javax.swing.JSeparator();
         X = new javax.swing.JPanel();
         jLabel12 = new javax.swing.JLabel();
@@ -180,18 +183,6 @@ public class RegistroHuesped extends javax.swing.JFrame {
         jLabel11.setText("NUMERO DE RESERVACIÓN");
         getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 510, 240, 20));
 
-        NumeroReservacion.setFont(new java.awt.Font("Roboto Light", 0, 18)); // NOI18N
-        NumeroReservacion.setBorder(null);
-        NumeroReservacion.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                NumeroReservacionActionPerformed(evt);
-            }
-
-            private void NumeroReservacionActionPerformed(ActionEvent evt) {
-            }
-        });
-        getContentPane().add(NumeroReservacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 540, 270, 40));
-
         jSeparator6.setForeground(new java.awt.Color(0, 156, 233));
         getContentPane().add(jSeparator6, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 580, 270, 10));
 
@@ -249,11 +240,16 @@ public class RegistroHuesped extends javax.swing.JFrame {
     }
 
     private void jLabel8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel8MouseClicked
-
+        ReservaDao conn1 = new ReservaDao();
+        conn1.Guardar(reservacion);
         Huesped huesped = new Huesped(TextNombre.getText(), TextApellido.getText(),FechaNacimiento.getText(),ComBoxNacionalidad.getSelectedItem(),TextTelefono.getText(), reservacion);
         HuespedDao conn = new HuespedDao();
         conn.Guardar(huesped);
-        
+
+        javax.swing.JOptionPane.showMessageDialog(null, "Nueva Reservacion realizada");
+        MenuUsuarior in = new MenuUsuarior();
+        in.setVisible(true);
+        this.dispose();  
     }
 
 
@@ -305,8 +301,7 @@ public class RegistroHuesped extends javax.swing.JFrame {
     private javax.swing.JPanel BarraArriba;
     private javax.swing.JPanel BtnRegistrar;
     private javax.swing.JComboBox<Nacionalidad> ComBoxNacionalidad;
-    private javax.swing.JTextField FechaNacimiento;
-    private javax.swing.JTextField NumeroReservacion;
+    private javax.swing.JTextField FechaNacimiento; 
     private javax.swing.JTextField TextApellido;
     private javax.swing.JTextField TextNombre;
     private javax.swing.JTextField TextTelefono;
