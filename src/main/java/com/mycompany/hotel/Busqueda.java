@@ -272,8 +272,17 @@ public class Busqueda extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void BTNBUSCARMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BTNBUSCARMouseClicked
-        //CLICK PARA BUSCAR ALGO EN LA BASE DE DATOS.
-    }//GEN-LAST:event_BTNBUSCARMouseClicked
+        String apellido = jTextField1.getText();
+        try {
+            Long.parseLong(apellido);
+            MostrarTablaHuespedesBuscados(apellido);
+        } catch (Exception e) {
+          MostrarTablaHuespedesBuscados(apellido);
+        }finally {
+            jScrollPane1.setViewportView(TablaHuespedes);
+        }
+        
+    }
 
     private void BTNBUSCARMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BTNBUSCARMouseEntered
         BtnBUSCAR.setBackground(new Color(0,170,240));
@@ -355,6 +364,39 @@ public class Busqueda extends javax.swing.JFrame {
         // Establece el modelo en la tabla
         TablaHuespedes.setModel(model);
     }
+    void MostrarTablaHuespedesBuscados(String apellido){
+
+        HuespedDao buscar = new HuespedDao();
+        List<Huesped> Listatabla = buscar.ConsultaApellido(apellido);
+        
+        DefaultTableModel model = new DefaultTableModel();
+
+        // Agrega las columnas al modelo de la tabla
+        model.addColumn("ID");
+        model.addColumn("Nombre");
+        model.addColumn("Apellido");
+        model.addColumn("Fecha_nacimiento");
+        model.addColumn("Nacionalidad");
+        model.addColumn("Telefono");
+        model.addColumn("Reserva");
+
+        // Llena las filas del modelo con los datos de los productos
+        for (Huesped huesped : Listatabla) {
+            model.addRow(new Object[] {
+                    huesped.getId(),
+                    huesped.getNombre(),
+                    huesped.getApellido(),
+                    huesped.getFecha_nacimiento(),
+                    huesped.getNacionalidad(),
+                    huesped.getTelefono(),
+                    huesped.getReserva()
+            });
+        }
+
+        // Establece el modelo en la tabla
+        TablaHuespedes.setModel(model);
+    }
+
     void MostrarTablaReserva(){
 
         ReservaDao buscar = new ReservaDao();
@@ -387,6 +429,40 @@ public class Busqueda extends javax.swing.JFrame {
         // Establece el modelo en la tabla
         TablaReservacion.setModel(model);
     }
+
+    void MostrarTablaReserva(Long Id){
+
+        ReservaDao buscar = new ReservaDao();
+        List<Huesped> Listatabla = buscar.ConsultarReservaId(Id);
+        
+        DefaultTableModel model = new DefaultTableModel();
+
+        // Agrega las columnas al modelo de la tabla
+        model.addColumn("ID");
+        model.addColumn("Nombre");
+        model.addColumn("Apellido");
+        model.addColumn("Fecha_nacimiento");
+        model.addColumn("Nacionalidad");
+        model.addColumn("Telefono");
+        model.addColumn("Reserva");
+
+        // Llena las filas del modelo con los datos de los productos
+        for (Huesped huesped : Listatabla) {
+            model.addRow(new Object[] {
+                    huesped.getId(),
+                    huesped.getNombre(),
+                    huesped.getApellido(),
+                    huesped.getFecha_nacimiento(),
+                    huesped.getNacionalidad(),
+                    huesped.getTelefono(),
+                    huesped.getReserva()
+            });
+        }
+        // Establece el modelo en la tabla
+        TablaHuespedes.setModel(model);
+    }
+
+    
 
 
 

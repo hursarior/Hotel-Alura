@@ -5,6 +5,7 @@ import java.util.List;
 import javax.persistence.EntityManager;
 
 import Conexion.Conn;
+import Model.Huesped;
 import Model.Reserva;
 
 public class ReservaDao {
@@ -50,6 +51,16 @@ public class ReservaDao {
         con.getTransaction().commit();
         con.close();
         return resultado;
+    }
+
+    public List<Huesped> ConsultarReservaId(Long Id) {
+        EntityManager con = conn.CrearConexion();
+        con.getTransaction().begin();
+        String sql = "SELECT e FROM Huesped e WHERE e.reserva_id = '" + Id + "'";
+        List<Huesped> resultado = con.createQuery(sql).getResultList();
+        con.getTransaction().commit();
+        con.close();
+        return resultado; 
     }
     
 }

@@ -25,6 +25,7 @@ public class SistemaReserva extends javax.swing.JFrame {
     private int xMouse, yMouse;
     public Reserva reservacion;
     public FormasPago formaPagoSeleccionada;
+    private long diasDiferencia;
 
     /**
      * Creates new form SistemaReserva
@@ -163,7 +164,7 @@ public class SistemaReserva extends javax.swing.JFrame {
         getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 270, -1, -1));
 
         ValorReservacion.setFont(new java.awt.Font("Roboto Light", 1, 24)); // NOI18N
-        ValorReservacion.setText("X");
+        ValorReservacion.setText("$"+(diasDiferencia * 50));
         getContentPane().add(ValorReservacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 310, 180, 30));
 
         jLabel12.setFont(new java.awt.Font("Roboto Light", 1, 18)); // NOI18N
@@ -233,13 +234,14 @@ public class SistemaReserva extends javax.swing.JFrame {
         String fecha2 = TextCheckOut.getText();
         LocalDate localDate = LocalDate.parse(fecha1);
         LocalDate localDate2 = LocalDate.parse(fecha2);
-        long diasDiferencia = ChronoUnit.DAYS.between(localDate, localDate2);
+        diasDiferencia = ChronoUnit.DAYS.between(localDate, localDate2);
         this.reservacion = new Reserva(localDate, localDate2, new BigDecimal((diasDiferencia * 50)), formaPagoSeleccionada);
         RegistroHuesped in = new RegistroHuesped(reservacion);
         in.setVisible(true);
         this.dispose();
         
     }
+    
 
     private void BarraArribaMousePressed(java.awt.event.MouseEvent evt) {
         xMouse = evt.getX();

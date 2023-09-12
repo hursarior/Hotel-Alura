@@ -51,6 +51,17 @@ public class HuespedDao {
         
     }
 
+    public List<Huesped> ConsultaApellido(String apellido) {
+        EntityManager con = conn.CrearConexion();
+        con.getTransaction().begin();
+        String sql = "SELECT e FROM Huesped e WHERE e.apellido = '" + apellido + "'";
+        List<Huesped> resultado = con.createQuery(sql).getResultList();
+        con.getTransaction().commit();
+        con.close();
+        return resultado; 
+    }
+    
+
 
     
 }
