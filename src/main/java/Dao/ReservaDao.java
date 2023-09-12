@@ -34,7 +34,7 @@ public class ReservaDao {
 
         EntityManager con = conn.CrearConexion();
         con.getTransaction().begin();
-        String jpql = "SELECT r FROM RESERVA r";
+        String jpql = "SELECT r FROM Reserva r";
         List<Reserva> Resultado = con.createQuery(jpql).getResultList();
         con.getTransaction().commit();
         con.close();

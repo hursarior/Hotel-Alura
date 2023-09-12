@@ -29,14 +29,14 @@ public class HuespedDao {
     }
 
    
-    public List<?> Consultar() {
+    public List<Huesped> Consultar() {
         EntityManager con = conn.CrearConexion();
         con.getTransaction().begin();
         String jpql = "SELECT h FROM Huesped h";
         List<?> Resultado = con.createQuery(jpql).getResultList();
         con.getTransaction().commit();
         con.close();
-        return Resultado;
+        return (List<Huesped>) Resultado;
     }
 
     
