@@ -21,12 +21,13 @@ public class ReservaDao {
     }
 
     
-    public void Eliminar(Reserva reservacion) {
+    public void Eliminar(Long Id) {
         EntityManager con = conn.CrearConexion();
         con.getTransaction().begin();
-        con.remove(reservacion);
+        Reserva reserva = con.find(Reserva.class, Id);
+        con.remove(reserva);
         con.getTransaction().commit();
-        con.close();
+        con.close();;
 
     }
 

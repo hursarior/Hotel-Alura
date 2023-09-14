@@ -2,6 +2,7 @@ package Model;
 
 import java.time.LocalDate;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -45,7 +46,7 @@ public class Huesped {
     @Getter @Setter
     private String telefono;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "reserva_id")
     @Getter @Setter
     private Reserva reserva;

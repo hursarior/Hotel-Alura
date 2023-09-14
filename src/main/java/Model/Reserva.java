@@ -3,10 +3,12 @@ package Model;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 
@@ -39,6 +41,7 @@ public class Reserva {
 
     @Getter @Setter
     private FormasPago Forma_pago;
+    
 
     public Reserva( LocalDate chechin, LocalDate checkout, BigDecimal valor_reserva,
         Object object) {
