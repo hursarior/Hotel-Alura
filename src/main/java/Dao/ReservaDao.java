@@ -53,11 +53,11 @@ public class ReservaDao {
         return resultado;
     }
 
-    public List<Huesped> ConsultarReservaId(Long Id) {
+    public List<Reserva> ConsultarReservaId(Long Id) {
         EntityManager con = conn.CrearConexion();
         con.getTransaction().begin();
-        String sql = "SELECT e FROM Huesped e WHERE e.reserva_id = '" + Id + "'";
-        List<Huesped> resultado = con.createQuery(sql).getResultList();
+        String sql = "SELECT e FROM Reserva e WHERE e.reserca_id = '" + Id + "'";
+        List<Reserva> resultado = con.createQuery(sql).getResultList();
         con.getTransaction().commit();
         con.close();
         return resultado; 

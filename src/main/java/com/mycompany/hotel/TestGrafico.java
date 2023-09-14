@@ -6,7 +6,7 @@ public class TestGrafico {
       in.setVisible(true);
       
     }
-    
-    
 
+
+    
 }

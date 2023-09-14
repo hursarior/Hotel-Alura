@@ -1,5 +1,6 @@
 package Dao;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -7,6 +8,9 @@ import javax.persistence.EntityManager;
 
 import Conexion.Conn;
 import Model.Huesped;
+import Model.Nacionalidad;
+import Model.Reserva;
+import net.bytebuddy.asm.Advice.Local;
 
 public class HuespedDao {
     Conn conn = new Conn();
@@ -20,9 +24,10 @@ public class HuespedDao {
     }
 
 
-    public void Eliminar(Huesped huesped) { 
+    public void Eliminar(Long id) { 
         EntityManager con = conn.CrearConexion();
         con.getTransaction().begin();
+        Huesped huesped = con.find(Huesped.class, id);
         con.remove(huesped);
         con.getTransaction().commit();
         con.close();
@@ -40,7 +45,7 @@ public class HuespedDao {
     }
 
     
-    public Object ConsultaId(Long id) {
+    public Huesped ConsultaId(Long id) {
         EntityManager con = conn.CrearConexion();
         con.getTransaction().begin();
         Huesped resultado = con.find(Huesped.class, id);
@@ -61,7 +66,21 @@ public class HuespedDao {
         return resultado; 
     }
     
+    public void ActualizarHuesped(Long id, String nombre, String apellido,LocalDate 
+    fecha, String telefono ){
 
+        EntityManager con = conn.CrearConexion();
+        con.getTransaction().begin();
+        Huesped huesped = con.find(Huesped.class, id);
+
+        huesped.setNombre(nombre);
+        huesped.setApellido(apellido);
+        huesped.setFecha_nacimiento(fecha);
+        huesped.setTelefono(telefono);
+
+        con.getTransaction().commit();
+        con.close();
+    }
 
     
 }

@@ -5,6 +5,7 @@
 package com.mycompany.hotel;
 
 import java.awt.Color;
+import java.time.LocalDate;
 import java.util.List;
 
 import javax.swing.table.DefaultTableModel;
@@ -12,7 +13,10 @@ import javax.swing.table.DefaultTableModel;
 import Dao.HuespedDao;
 import Dao.ReservaDao;
 import Model.Huesped;
+import Model.Nacionalidad;
 import Model.Reserva;
+import lombok.Getter;
+import lombok.Setter;
 
 /**
  *
@@ -272,16 +276,36 @@ public class Busqueda extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void BTNBUSCARMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BTNBUSCARMouseClicked
-        String apellido = jTextField1.getText();
-        try {
-            Long.parseLong(apellido);
-            MostrarTablaHuespedesBuscados(apellido);
-        } catch (Exception e) {
-          MostrarTablaHuespedesBuscados(apellido);
-        }finally {
-            jScrollPane1.setViewportView(TablaHuespedes);
-        }
         
+        
+        String apellido = jTextField1.getText();
+        
+        if(apellido.isEmpty()){
+
+            javax.swing.JOptionPane.showMessageDialog(null, 
+    "Necesita Escribir un parametro de busqueda, sea un numero de reservacion o un apellido de huesped");
+
+        } else{
+         if( apellido.matches("\\d+")){
+
+        Long.parseLong(apellido);
+        jTabbedPane1.setSelectedIndex(1);
+        MostrarTablaBusquedaReservaID(Long.valueOf(apellido));
+        jScrollPane2.setViewportView(TablaReservacion);
+
+        }
+
+        if(apellido.matches("[a-zA-Z]+")){
+
+        jTabbedPane1.setSelectedIndex(0);
+        MostrarTablaHuespedesBuscados(apellido);
+        jScrollPane1.setViewportView(TablaHuespedes);
+
+        }
+
+        }
+       
+
     }
 
     private void BTNBUSCARMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BTNBUSCARMouseEntered
@@ -292,9 +316,13 @@ public class Busqueda extends javax.swing.JFrame {
         BtnBUSCAR.setBackground(new Color(0,156,233));
     }//GEN-LAST:event_BTNBUSCARMouseExited
 
-    private void BTNELIMINARMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BTNELIMINARMouseClicked
-        // CLICK PARA ELIMINAR ALGO EN LA TABLA
-    }//GEN-LAST:event_BTNELIMINARMouseClicked
+    private void BTNELIMINARMouseClicked(java.awt.event.MouseEvent evt) {
+
+        HuespedDao nn = new HuespedDao();
+        Long Id =  Long.valueOf(TablaHuespedes.getValueAt(TablaHuespedes.getSelectedRow(), 0).toString());
+        nn.Eliminar(Id);
+        MostrarTablaHuespedes();
+    }
 
     private void BTNELIMINARMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BTNELIMINARMouseEntered
         BtnELIMINAR.setBackground(new Color(0,170,240));
@@ -305,8 +333,19 @@ public class Busqueda extends javax.swing.JFrame {
     }//GEN-LAST:event_BTNELIMINARMouseExited
 
     private void BTNEDITARMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BTNEDITARMouseClicked
-        // cLICK AL BOTON EDITAR PROGRAMAR ACCION
-    }//GEN-LAST:event_BTNEDITARMouseClicked
+        HuespedDao nn = new HuespedDao();
+        
+        Long Id =  Long.valueOf(TablaHuespedes.getValueAt(TablaHuespedes.getSelectedRow(), 0).toString());
+        String nombre = TablaHuespedes.getValueAt(TablaHuespedes.getSelectedRow(), 1).toString();
+        String apellido = TablaHuespedes.getValueAt(TablaHuespedes.getSelectedRow(), 2).toString();
+        LocalDate fecha_nacimiento=  LocalDate.parse(TablaHuespedes.getValueAt(TablaHuespedes.getSelectedRow(), 3).toString());
+        String telefono = TablaHuespedes.getValueAt(TablaHuespedes.getSelectedRow(), 5).toString();
+        
+        
+        nn.ActualizarHuesped(Id, nombre, apellido, fecha_nacimiento, telefono);
+
+    }
+
 
     private void BTNEDITARMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BTNEDITARMouseEntered
         BtnEDITAR.setBackground(new Color(0,170,240));
@@ -430,36 +469,36 @@ public class Busqueda extends javax.swing.JFrame {
         TablaReservacion.setModel(model);
     }
 
-    void MostrarTablaReserva(Long Id){
+
+    void MostrarTablaBusquedaReservaID(Long Id){
 
         ReservaDao buscar = new ReservaDao();
-        List<Huesped> Listatabla = buscar.ConsultarReservaId(Id);
+        List<Reserva> Listatabla = buscar.ConsultarReservaId(Id);
         
         DefaultTableModel model = new DefaultTableModel();
 
         // Agrega las columnas al modelo de la tabla
         model.addColumn("ID");
-        model.addColumn("Nombre");
-        model.addColumn("Apellido");
-        model.addColumn("Fecha_nacimiento");
-        model.addColumn("Nacionalidad");
-        model.addColumn("Telefono");
-        model.addColumn("Reserva");
+        model.addColumn("Fecha Entrada");
+        model.addColumn("Fecha Salida");
+        model.addColumn("Valor Reserva");
+        model.addColumn("Forma de Pago");
 
         // Llena las filas del modelo con los datos de los productos
-        for (Huesped huesped : Listatabla) {
+        for (Reserva Reserva : Listatabla) {
             model.addRow(new Object[] {
-                    huesped.getId(),
-                    huesped.getNombre(),
-                    huesped.getApellido(),
-                    huesped.getFecha_nacimiento(),
-                    huesped.getNacionalidad(),
-                    huesped.getTelefono(),
-                    huesped.getReserva()
+
+                Reserva.getReserca_id(),
+                Reserva.getChechin(),
+                Reserva.getCheckout(),
+                Reserva.getValor_reserva(),
+                Reserva.getForma_pago()
+           
             });
+       
         }
         // Establece el modelo en la tabla
-        TablaHuespedes.setModel(model);
+        TablaReservacion.setModel(model);
     }
 
     
