@@ -3,12 +3,10 @@ package Model;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 
@@ -22,13 +20,19 @@ import lombok.ToString;
 @Table(name = "RESERVA")
 @ToString
 @NoArgsConstructor
-@EqualsAndHashCode(of = "reserca_id")
+@EqualsAndHashCode(of = "reserva_id")
 public class Reserva {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Getter
-    private Long reserca_id;
+
+    
+    private Long reserva_id;
+
+    public Long getReserva_id() {
+        return reserva_id;
+    }
+
 
     @Getter @Setter
     private LocalDate chechin;

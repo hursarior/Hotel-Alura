@@ -8,6 +8,8 @@ import java.awt.Color;
 
 import javax.swing.JOptionPane;
 
+import views.TextPrompt;
+
 /**
  *
  * @author user
@@ -21,6 +23,8 @@ public class Login extends javax.swing.JFrame {
      */
     public Login() {
         initComponents();
+        TextPrompt holder = new TextPrompt("Ingrese su nombre de usuario",TextUsuarior);
+        TextPrompt hold1 = new TextPrompt("***********",TextPassword);
     }
 
     /**
@@ -197,6 +201,8 @@ public class Login extends javax.swing.JFrame {
             in.setVisible(true);
             this.dispose();
 
+        }else if(User.isEmpty() || enteredPassword.isEmpty()){
+            javax.swing.JOptionPane.showMessageDialog(null, "Debe llenar todos los campos");
         }else {
             JOptionPane.showMessageDialog(null, "Inicio de sesión fallido");
         }

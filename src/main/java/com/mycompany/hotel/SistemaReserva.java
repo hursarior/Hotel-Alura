@@ -15,6 +15,7 @@ import java.time.temporal.ChronoUnit;
 import Dao.ReservaDao;
 import Model.FormasPago;
 import Model.Reserva;
+import views.TextPrompt;
 
 /**
  *
@@ -32,7 +33,8 @@ public class SistemaReserva extends javax.swing.JFrame {
      */
     public SistemaReserva() {
         initComponents();
-      
+        TextPrompt holder = new TextPrompt("yyyy-mm-dd", TextCheckOut);
+        TextPrompt holder1 = new TextPrompt("yyyy-mm-dd", TextCheckin);
     }
 
     /**
@@ -144,7 +146,7 @@ public class SistemaReserva extends javax.swing.JFrame {
         TextCheckOut.setBorder(null);
         TextCheckOut.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                TextCheckOutActionPerformed(evt);
+                actionPerformed(evt);
             }
         });
         getContentPane().add(TextCheckOut, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 210, 310, 40));
@@ -232,6 +234,11 @@ public class SistemaReserva extends javax.swing.JFrame {
 
         String fecha1 = TextCheckin.getText();
         String fecha2 = TextCheckOut.getText();
+        if(fecha2.isEmpty() || fecha1.isEmpty()){
+            javax.swing.JOptionPane.showMessageDialog(null, 
+            "Debe llenar todos los campos.");
+        }else{
+
         LocalDate localDate = LocalDate.parse(fecha1);
         LocalDate localDate2 = LocalDate.parse(fecha2);
         diasDiferencia = ChronoUnit.DAYS.between(localDate, localDate2);
@@ -239,7 +246,7 @@ public class SistemaReserva extends javax.swing.JFrame {
         RegistroHuesped in = new RegistroHuesped(reservacion);
         in.setVisible(true);
         this.dispose();
-        
+        }
     }
     
 

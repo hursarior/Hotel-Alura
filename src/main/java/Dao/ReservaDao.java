@@ -57,7 +57,7 @@ public class ReservaDao {
     public List<Reserva> ConsultarReservaId(Long Id) {
         EntityManager con = conn.CrearConexion();
         con.getTransaction().begin();
-        String sql = "SELECT e FROM Reserva e WHERE e.reserca_id = '" + Id + "'";
+        String sql = "SELECT e FROM Reserva e WHERE e.reserva_id = '" + Id + "'";
         List<Reserva> resultado = con.createQuery(sql).getResultList();
         con.getTransaction().commit();
         con.close();

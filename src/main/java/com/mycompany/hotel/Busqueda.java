@@ -38,7 +38,7 @@ public class Busqueda extends javax.swing.JFrame {
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated
-    // Code">//GEN-BEGIN:initComponents
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
@@ -62,6 +62,7 @@ public class Busqueda extends javax.swing.JFrame {
         BarraArriba = new javax.swing.JPanel();
         X = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
+        Atras = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setLocationByPlatform(true);
@@ -90,11 +91,9 @@ public class Busqueda extends javax.swing.JFrame {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 BTNBUSCARMouseClicked(evt);
             }
-
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 BTNBUSCARMouseEntered(evt);
             }
-
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 BTNBUSCARMouseExited(evt);
             }
@@ -103,13 +102,13 @@ public class Busqueda extends javax.swing.JFrame {
         javax.swing.GroupLayout BtnBUSCARLayout = new javax.swing.GroupLayout(BtnBUSCAR);
         BtnBUSCAR.setLayout(BtnBUSCARLayout);
         BtnBUSCARLayout.setHorizontalGroup(
-                BtnBUSCARLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(BTNBUSCAR, javax.swing.GroupLayout.Alignment.TRAILING,
-                                javax.swing.GroupLayout.DEFAULT_SIZE, 120, Short.MAX_VALUE));
+            BtnBUSCARLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(BTNBUSCAR, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 120, Short.MAX_VALUE)
+        );
         BtnBUSCARLayout.setVerticalGroup(
-                BtnBUSCARLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(BTNBUSCAR, javax.swing.GroupLayout.Alignment.TRAILING,
-                                javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE));
+            BtnBUSCARLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(BTNBUSCAR, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
+        );
 
         jPanel1.add(BtnBUSCAR, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 80, 120, 40));
 
@@ -124,11 +123,9 @@ public class Busqueda extends javax.swing.JFrame {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 BTNELIMINARMouseClicked(evt);
             }
-
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 BTNELIMINARMouseEntered(evt);
             }
-
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 BTNELIMINARMouseExited(evt);
             }
@@ -137,13 +134,13 @@ public class Busqueda extends javax.swing.JFrame {
         javax.swing.GroupLayout BtnELIMINARLayout = new javax.swing.GroupLayout(BtnELIMINAR);
         BtnELIMINAR.setLayout(BtnELIMINARLayout);
         BtnELIMINARLayout.setHorizontalGroup(
-                BtnELIMINARLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(BTNELIMINAR, javax.swing.GroupLayout.Alignment.TRAILING,
-                                javax.swing.GroupLayout.DEFAULT_SIZE, 120, Short.MAX_VALUE));
+            BtnELIMINARLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(BTNELIMINAR, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 120, Short.MAX_VALUE)
+        );
         BtnELIMINARLayout.setVerticalGroup(
-                BtnELIMINARLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(BTNELIMINAR, javax.swing.GroupLayout.Alignment.TRAILING,
-                                javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE));
+            BtnELIMINARLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(BTNELIMINAR, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
+        );
 
         jPanel1.add(BtnELIMINAR, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 520, 120, 40));
 
@@ -158,11 +155,9 @@ public class Busqueda extends javax.swing.JFrame {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 BTNEDITARMouseClicked(evt);
             }
-
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 BTNEDITARMouseEntered(evt);
             }
-
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 BTNEDITARMouseExited(evt);
             }
@@ -171,13 +166,13 @@ public class Busqueda extends javax.swing.JFrame {
         javax.swing.GroupLayout BtnEDITARLayout = new javax.swing.GroupLayout(BtnEDITAR);
         BtnEDITAR.setLayout(BtnEDITARLayout);
         BtnEDITARLayout.setHorizontalGroup(
-                BtnEDITARLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(BTNEDITAR, javax.swing.GroupLayout.Alignment.TRAILING,
-                                javax.swing.GroupLayout.DEFAULT_SIZE, 120, Short.MAX_VALUE));
+            BtnEDITARLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(BTNEDITAR, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 120, Short.MAX_VALUE)
+        );
         BtnEDITARLayout.setVerticalGroup(
-                BtnEDITARLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(BTNEDITAR, javax.swing.GroupLayout.Alignment.TRAILING,
-                                javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE));
+            BtnEDITARLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(BTNEDITAR, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
+        );
 
         jPanel1.add(BtnEDITAR, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 520, 120, 40));
 
@@ -199,17 +194,17 @@ public class Busqueda extends javax.swing.JFrame {
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
-                jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 831, Short.MAX_VALUE));
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 831, Short.MAX_VALUE)
+        );
         jPanel2Layout.setVerticalGroup(
-                jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 307,
-                                        javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 1, Short.MAX_VALUE)));
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 307, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 1, Short.MAX_VALUE))
+        );
 
-        jTabbedPane1.addTab("HUÉSPEDES", new javax.swing.ImageIcon(getClass().getResource("/imagenes/persona.png")),
-                jPanel2); // NOI18N
+        jTabbedPane1.addTab("HUÉSPEDES", new javax.swing.ImageIcon(getClass().getResource("/imagenes/persona.png")), jPanel2); // NOI18N
 
         jPanel3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 156, 233), 2));
 
@@ -220,14 +215,15 @@ public class Busqueda extends javax.swing.JFrame {
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
-                jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 831, Short.MAX_VALUE));
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 831, Short.MAX_VALUE)
+        );
         jPanel3Layout.setVerticalGroup(
-                jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 307,
-                                        javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 1, Short.MAX_VALUE)));
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 307, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 1, Short.MAX_VALUE))
+        );
 
         jTabbedPane1.addTab("RESERVA", jPanel3);
 
@@ -257,20 +253,33 @@ public class Busqueda extends javax.swing.JFrame {
         });
         X.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 2, 40, 30));
 
+        Atras.setFont(new java.awt.Font("Roboto Medium", 1, 24)); // NOI18N
+        Atras.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        Atras.setText("<");
+        Atras.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        Atras.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                AtrasMouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout BarraArribaLayout = new javax.swing.GroupLayout(BarraArriba);
         BarraArriba.setLayout(BarraArribaLayout);
         BarraArribaLayout.setHorizontalGroup(
-                BarraArribaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, BarraArribaLayout.createSequentialGroup()
-                                .addGap(0, 900, Short.MAX_VALUE)
-                                .addComponent(X, javax.swing.GroupLayout.PREFERRED_SIZE,
-                                        javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)));
+            BarraArribaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, BarraArribaLayout.createSequentialGroup()
+                .addComponent(Atras, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 855, Short.MAX_VALUE)
+                .addComponent(X, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
         BarraArribaLayout.setVerticalGroup(
-                BarraArribaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, BarraArribaLayout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
-                                .addComponent(X, javax.swing.GroupLayout.PREFERRED_SIZE, 30,
-                                        javax.swing.GroupLayout.PREFERRED_SIZE)));
+            BarraArribaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, BarraArribaLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addGroup(BarraArribaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(Atras, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(X, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
+        );
 
         jPanel1.add(BarraArriba, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 940, 30));
 
@@ -279,9 +288,15 @@ public class Busqueda extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void AtrasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AtrasMouseClicked
+        this.dispose();
+        MenuUsuarior in = new MenuUsuarior();
+        in.setVisible(true);
+    }//GEN-LAST:event_AtrasMouseClicked
+
     private void BTNBUSCARMouseClicked(java.awt.event.MouseEvent evt) {// GEN-FIRST:event_BTNBUSCARMouseClicked
 
-        String apellido = jTextField1.getText();
+        var apellido = jTextField1.getText();
 
         if (apellido.isEmpty()) {
 
@@ -320,6 +335,8 @@ public class Busqueda extends javax.swing.JFrame {
 
     private void BTNELIMINARMouseClicked(java.awt.event.MouseEvent evt) {
         int monitor = jTabbedPane1.getSelectedIndex();
+        
+        
         if (monitor == 0) {
         int choice = JOptionPane.showConfirmDialog(
                 null,
@@ -370,6 +387,9 @@ public class Busqueda extends javax.swing.JFrame {
         String telefono = TablaHuespedes.getValueAt(TablaHuespedes.getSelectedRow(), 5).toString();
 
         nn.ActualizarHuesped(Id, nombre, apellido, fecha_nacimiento, telefono);
+                    javax.swing.JOptionPane.showMessageDialog(null,
+                    "Se a actualizado con exito.");
+                    MostrarTablaHuespedes();
 
     }
 
@@ -422,7 +442,7 @@ public class Busqueda extends javax.swing.JFrame {
                     huesped.getFecha_nacimiento(),
                     huesped.getNacionalidad(),
                     huesped.getTelefono(),
-                    huesped.getReserva()
+                    huesped.getReserva().getReserva_id()
             });
         }
 
@@ -455,7 +475,7 @@ public class Busqueda extends javax.swing.JFrame {
                     huesped.getFecha_nacimiento(),
                     huesped.getNacionalidad(),
                     huesped.getTelefono(),
-                    huesped.getReserva()
+                    huesped.getReserva().getReserva_id()
             });
         }
 
@@ -481,7 +501,7 @@ public class Busqueda extends javax.swing.JFrame {
         for (Reserva Reserva : Listatabla) {
             model.addRow(new Object[] {
 
-                    Reserva.getReserca_id(),
+                    Reserva.getReserva_id(),
                     Reserva.getChechin(),
                     Reserva.getCheckout(),
                     Reserva.getValor_reserva(),
@@ -512,7 +532,7 @@ public class Busqueda extends javax.swing.JFrame {
         for (Reserva Reserva : Listatabla) {
             model.addRow(new Object[] {
 
-                    Reserva.getReserca_id(),
+                    Reserva.getReserva_id(),
                     Reserva.getChechin(),
                     Reserva.getCheckout(),
                     Reserva.getValor_reserva(),
@@ -565,6 +585,7 @@ public class Busqueda extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel Atras;
     private javax.swing.JLabel BTNBUSCAR;
     private javax.swing.JLabel BTNEDITAR;
     private javax.swing.JLabel BTNELIMINAR;
