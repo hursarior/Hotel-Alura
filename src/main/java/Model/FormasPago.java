@@ -8,12 +8,6 @@ public enum FormasPago {
     TRANSFERENCIA_BANCARIA,
     PAYPAL,
     CHEQUE;
-
-   
-
-
-
-
     
 }
 
