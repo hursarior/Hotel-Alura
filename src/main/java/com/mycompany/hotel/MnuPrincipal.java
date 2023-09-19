@@ -4,6 +4,8 @@
  */
 package com.mycompany.hotel;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author user
@@ -152,8 +154,24 @@ public class MnuPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_jLabel4MouseClicked
 
     private void jLabel7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel7MouseClicked
-        System.exit(0);
-    }//GEN-LAST:event_jLabel7MouseClicked
+       
+            int respuesta = JOptionPane.showOptionDialog(
+                null,
+                "¿Está seguro de que desea cerrar la App?",
+                "Confirmación",
+                JOptionPane.YES_NO_OPTION,
+                JOptionPane.QUESTION_MESSAGE,
+                null,
+                new String[] { "Sí", "No" },
+                "Sí"  
+            );
+        boolean cerrarApp = (respuesta == JOptionPane.YES_OPTION);
+        if(cerrarApp){
+            System.exit(0);
+        }else{
+            System.out.println("continuamos");
+        }
+    }
 
     private void BarraArribaMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BarraArribaMousePressed
         xMouse = evt.getX();

@@ -4,6 +4,8 @@
  */
 package com.mycompany.hotel;
 
+import java.time.LocalDate;
+
 /**
  *
  * @author user
@@ -39,6 +41,7 @@ public class MenuUsuarior extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         BarraArriba1 = new javax.swing.JPanel();
+        LocalDate fecha = LocalDate().now();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setLocationByPlatform(true);
@@ -51,7 +54,8 @@ public class MenuUsuarior extends javax.swing.JFrame {
 
         Fecha_Panel.setFont(new java.awt.Font("Roboto Medium", 1, 36)); // NOI18N
         Fecha_Panel.setForeground(new java.awt.Color(255, 255, 255));
-        Fecha_Panel.setText("Hoy ");
+        
+        Fecha_Panel.setText("Hoy es; " + fecha);
         jPanel1.add(Fecha_Panel, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 70, -1, -1));
 
         jLabel5.setFont(new java.awt.Font("Roboto Light", 1, 24)); // NOI18N
@@ -136,9 +140,13 @@ public class MenuUsuarior extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private LocalDate LocalDate() {
+        return null;
+    }
+
     private void jLabel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseClicked
-            // Buscar Resercaciones y presentar
-        SistemaReserva in = new SistemaReserva();
+        var fecha = LocalDate().now();
+        SistemaReserva in = new SistemaReserva(fecha);
         in.setVisible(true);
         this.dispose();
         
@@ -152,7 +160,9 @@ public class MenuUsuarior extends javax.swing.JFrame {
     }//GEN-LAST:event_jLabel4MouseClicked
 
     private void jLabel8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel8MouseClicked
-        System.exit(0);
+        Login login = new Login();
+        login.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_jLabel8MouseClicked
 
     private void BarraArriba1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BarraArriba1MousePressed

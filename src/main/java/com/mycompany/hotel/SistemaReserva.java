@@ -9,13 +9,15 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.math.BigDecimal;
 import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
+import java.time.ZoneId;
 import java.time.temporal.ChronoUnit;
+import java.util.Date;
 
-import Dao.ReservaDao;
+import javax.swing.JOptionPane;
+
 import Model.FormasPago;
 import Model.Reserva;
-import views.TextPrompt;
+
 
 /**
  *
@@ -31,12 +33,10 @@ public class SistemaReserva extends javax.swing.JFrame {
     /**
      * Creates new form SistemaReserva
      */
-    public SistemaReserva() {
+    public SistemaReserva(LocalDate fecha) {
         initComponents();
-        TextPrompt holder = new TextPrompt("yyyy-mm-dd", TextCheckOut);
-        TextPrompt holder1 = new TextPrompt("yyyy-mm-dd", TextCheckin);
     }
-
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -55,8 +55,6 @@ public class SistemaReserva extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
-        TextCheckOut = new javax.swing.JTextField();
-        TextCheckin = new javax.swing.JTextField();
         jSeparator1 = new javax.swing.JSeparator();
         jSeparator2 = new javax.swing.JSeparator();
         jLabel10 = new javax.swing.JLabel();
@@ -64,6 +62,8 @@ public class SistemaReserva extends javax.swing.JFrame {
         jLabel12 = new javax.swing.JLabel();
         jSeparator3 = new javax.swing.JSeparator();
         ComBoxFormaDePago = new javax.swing.JComboBox<>();
+        jDateChooser1 = new com.toedter.calendar.JDateChooser();
+        jDateChooser2 = new com.toedter.calendar.JDateChooser();
         jLabel1 = new javax.swing.JLabel();
         BarraArriba = new javax.swing.JPanel();
 
@@ -93,9 +93,6 @@ public class SistemaReserva extends javax.swing.JFrame {
         X.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 30, -1));
 
         getContentPane().add(X, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
-
-
-
 
         BtnConti.setBackground(new java.awt.Color(0, 156, 233));
 
@@ -142,19 +139,6 @@ public class SistemaReserva extends javax.swing.JFrame {
         jLabel9.setText("FECHA CHECK IN");
         getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 80, -1, -1));
 
-        TextCheckOut.setFont(new java.awt.Font("Roboto Light", 0, 18)); // NOI18N
-        TextCheckOut.setBorder(null);
-        TextCheckOut.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                actionPerformed(evt);
-            }
-        });
-        getContentPane().add(TextCheckOut, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 210, 310, 40));
-
-        TextCheckin.setFont(new java.awt.Font("Roboto Light", 0, 18)); // NOI18N
-        TextCheckin.setBorder(null);
-        getContentPane().add(TextCheckin, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 110, 310, 40));
-
         jSeparator1.setForeground(new java.awt.Color(0, 156, 233));
         getContentPane().add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 340, 310, 10));
 
@@ -166,7 +150,7 @@ public class SistemaReserva extends javax.swing.JFrame {
         getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 270, -1, -1));
 
         ValorReservacion.setFont(new java.awt.Font("Roboto Light", 1, 24)); // NOI18N
-        ValorReservacion.setText("$"+(diasDiferencia * 50));
+        ValorReservacion.setText("$ 50 USD POR NOCHE.");
         getContentPane().add(ValorReservacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 310, 180, 30));
 
         jLabel12.setFont(new java.awt.Font("Roboto Light", 1, 18)); // NOI18N
@@ -178,13 +162,19 @@ public class SistemaReserva extends javax.swing.JFrame {
 
         ComBoxFormaDePago.setFont(new java.awt.Font("Roboto Light", 0, 18)); // NOI18N
         ComBoxFormaDePago.setModel(new javax.swing.DefaultComboBoxModel<>(FormasPago.values()));
-                    // Agregar ActionListener al JComboBox para capturar la selección del usuario
-            ComBoxFormaDePago.addActionListener(new ActionListener() {
-                public void actionPerformed(ActionEvent e) {
-                    formaPagoSeleccionada = (FormasPago) ComBoxFormaDePago.getSelectedItem();
-                }
-            });
+        ComBoxFormaDePago.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                formaPagoSeleccionada = (FormasPago) ComBoxFormaDePago.getSelectedItem();
+                ValorReservacion.setText("$ " + valor()+ ".00");
+            }
+        });
         getContentPane().add(ComBoxFormaDePago, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 390, 290, 40));
+
+        jDateChooser1.setFont(new java.awt.Font("Roboto Black", 0, 18)); // NOI18N
+        getContentPane().add(jDateChooser1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 210, 300, 40));
+
+        jDateChooser2.setFont(new java.awt.Font("Roboto Black", 0, 18)); // NOI18N
+        getContentPane().add(jDateChooser2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 110, 300, 40));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Panel.png"))); // NOI18N
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 900, -1));
@@ -216,6 +206,7 @@ public class SistemaReserva extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+
     private void jLabel7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel7MouseClicked
         System.exit(0);
     }//GEN-LAST:event_jLabel7MouseClicked
@@ -226,27 +217,58 @@ public class SistemaReserva extends javax.swing.JFrame {
         BtnConti.setBackground(new Color(0, 170, 240));
     }//GEN-LAST:event_BtnContinuaMouseEntered
 
-    private void BtnContinuaMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BtnContinuaMouseExited
+    private void BtnContinuaMouseExited(java.awt.event.MouseEvent evt) {                                        
         BtnConti.setBackground(new Color(0, 156, 233));
-    }//GEN-LAST:event_BtnContinuaMouseExited
+    }
 
+    
     private void BtnContinuaMouseClicked(java.awt.event.MouseEvent evt) {
 
-        String fecha1 = TextCheckin.getText();
-        String fecha2 = TextCheckOut.getText();
-        if(fecha2.isEmpty() || fecha1.isEmpty()){
-            javax.swing.JOptionPane.showMessageDialog(null, 
-            "Debe llenar todos los campos.");
-        }else{
+        Date fecha1 = jDateChooser1.getDate();
+        Date fecha2 = jDateChooser2.getDate();
 
-        LocalDate localDate = LocalDate.parse(fecha1);
-        LocalDate localDate2 = LocalDate.parse(fecha2);
+        if(fecha1 != null && fecha2 != null){
+        LocalDate localDate = fecha1.toInstant().atZone(ZoneId.systemDefault()).toLocalDate(); ;
+        LocalDate localDate2 = fecha2.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();;
         diasDiferencia = ChronoUnit.DAYS.between(localDate, localDate2);
         this.reservacion = new Reserva(localDate, localDate2, new BigDecimal((diasDiferencia * 50)), formaPagoSeleccionada);
         RegistroHuesped in = new RegistroHuesped(reservacion);
         in.setVisible(true);
         this.dispose();
+
+        } else {
+
+            JOptionPane.showMessageDialog(null, "Debe llenar todos los campos");
+        
         }
+      
+    }
+
+    public String valor(){
+
+        Date fecha1 = jDateChooser1.getDate();
+        Date fecha2 = jDateChooser2.getDate();
+
+        try {
+
+        if(fecha1 != null && fecha2 != null){
+            
+        LocalDate localDate = fecha1.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+        LocalDate localDate2 = fecha2.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+
+        diasDiferencia = ChronoUnit.DAYS.between(localDate, localDate2);
+          var  resultado = new BigDecimal(diasDiferencia*50).abs();
+          return resultado.toString();
+        } 
+
+        } catch (Exception e) {
+
+            throw new RuntimeException(e);
+
+        }
+
+        return " ";
+
     }
     
 
@@ -289,17 +311,29 @@ public class SistemaReserva extends javax.swing.JFrame {
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(SistemaReserva.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+
+                /* Create and display the form */
+                java.awt.EventQueue.invokeLater(new Runnable() {
+                    public void run() {
+                        new SistemaReserva(null).setVisible(true);
+                    }
+                });
 
     }
 
+
+
+    
+    // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel BarraArriba;
     private javax.swing.JPanel BtnConti;
     private javax.swing.JLabel BtnContinua;
     private javax.swing.JComboBox<FormasPago> ComBoxFormaDePago;
-    private javax.swing.JTextField TextCheckOut;
-    private javax.swing.JTextField TextCheckin;
     private javax.swing.JLabel ValorReservacion;
     private javax.swing.JPanel X;
+    private com.toedter.calendar.JDateChooser jDateChooser1;
+    private com.toedter.calendar.JDateChooser jDateChooser2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel12;
@@ -312,5 +346,5 @@ public class SistemaReserva extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
-
+    // End of variables declaration//GEN-END:variables
 }

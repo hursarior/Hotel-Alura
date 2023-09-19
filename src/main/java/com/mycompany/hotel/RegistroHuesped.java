@@ -8,7 +8,10 @@ import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.time.ZoneId;
 import java.time.temporal.ChronoUnit;
+
+import com.toedter.calendar.JDateChooser;
 
 import Dao.HuespedDao;
 import Dao.ReservaDao;
@@ -30,12 +33,13 @@ public class RegistroHuesped extends javax.swing.JFrame {
     public RegistroHuesped(Reserva reservacion) {
         this.reservacion = reservacion;
         initComponents();
-        TextPrompt holder = new TextPrompt("yyyy-mm-dd",FechaNacimiento);    
+
     }
 
     @SuppressWarnings("unchecked")
     private void initComponents() {
 
+        // <editor-fold defaultstate="collapsed" desc="Generated Code">
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         BtnRegistrar = new javax.swing.JPanel();
@@ -45,7 +49,7 @@ public class RegistroHuesped extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         TextNombre = new javax.swing.JTextField();
         jSeparator1 = new javax.swing.JSeparator();
-        FechaNacimiento = new javax.swing.JTextField();
+        jDateChooser1 = new JDateChooser ();
         jSeparator3 = new javax.swing.JSeparator();
         jLabel7 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
@@ -61,6 +65,7 @@ public class RegistroHuesped extends javax.swing.JFrame {
         jLabel12 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         BarraArriba = new javax.swing.JPanel();
+        // </editor-fold>
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setLocationByPlatform(true);
@@ -132,9 +137,8 @@ public class RegistroHuesped extends javax.swing.JFrame {
         jSeparator1.setForeground(new java.awt.Color(0, 156, 233));
         getContentPane().add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 180, 270, 10));
 
-        FechaNacimiento.setFont(new java.awt.Font("Roboto Light", 0, 18)); // NOI18N
-        FechaNacimiento.setBorder(null);
-        getContentPane().add(FechaNacimiento, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 300, 270, 40));
+        jDateChooser1.setFont(new java.awt.Font("Roboto Light", 0, 18)); // NOI18N
+        getContentPane().add(jDateChooser1, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 300, 270, 40));
 
         jSeparator3.setForeground(new java.awt.Color(0, 156, 233));
         getContentPane().add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 270, 270, 10));
@@ -226,40 +230,38 @@ public class RegistroHuesped extends javax.swing.JFrame {
     }
 
     private void jLabel8MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel8MouseEntered
-        BtnRegistrar.setBackground(new Color(0,170,240));
+        BtnRegistrar.setBackground(new Color(0, 170, 240));
     }
 
     private void jLabel8MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel8MouseExited
-        BtnRegistrar.setBackground(new Color(0,156,233));
+        BtnRegistrar.setBackground(new Color(0, 156, 233));
     }
 
     private void jLabel8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel8MouseClicked
-
-        Huesped huesped = new Huesped(TextNombre.getText(), TextApellido.getText(),FechaNacimiento.getText(),ComBoxNacionalidad.getSelectedItem(),TextTelefono.getText(), reservacion);
+        LocalDate Datete = jDateChooser1.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+        Huesped huesped = new Huesped(TextNombre.getText(), TextApellido.getText(), Datete.toString(), ComBoxNacionalidad.getSelectedItem(), TextTelefono.getText(), reservacion);
         HuespedDao conn = new HuespedDao();
         conn.Guardar(huesped);
 
         javax.swing.JOptionPane.showMessageDialog(null, "Nueva Reservacion realizada");
         MenuUsuarior in = new MenuUsuarior();
         in.setVisible(true);
-        this.dispose();  
+        this.dispose();
     }
 
-
-    private void BarraArribaMousePressed(java.awt.event.MouseEvent evt) {                                         
+    private void BarraArribaMousePressed(java.awt.event.MouseEvent evt) {
         xMouse = evt.getX();
         yMouse = evt.getY();
     }
-    private void BarraArribaMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BarraArribaMouseDragged
+
+    private void BarraArribaMouseDragged(java.awt.event.MouseEvent evt) {
         int x = evt.getX();
         int y = evt.getY();
         this.setLocation(this.getX() + x - xMouse, this.getY() + y - yMouse);
         repaint();
     }
 
-                                        
-
-    private void jLabel12MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel12MouseClicked
+    private void jLabel12MouseClicked(java.awt.event.MouseEvent evt) {
         System.exit(0);
     }
 
@@ -273,7 +275,7 @@ public class RegistroHuesped extends javax.swing.JFrame {
                 if ("Nimbus".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
-                }   
+                }
             }
         } catch (ClassNotFoundException ex) {
             java.util.logging.Logger.getLogger(RegistroHuesped.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
@@ -281,20 +283,23 @@ public class RegistroHuesped extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(RegistroHuesped.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
             java.util.logging.Logger.getLogger(RegistroHuesped.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catchBtnRegistraring.UnsupportedLookAndFeelException ex) {
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(RegistroHuesped.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
-
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new RegistroHuesped(null).setVisible(true);
+            }
+        });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel BarraArriba;
     private javax.swing.JPanel BtnRegistrar;
     private javax.swing.JComboBox<Nacionalidad> ComBoxNacionalidad;
-    private javax.swing.JTextField FechaNacimiento; 
     private javax.swing.JTextField TextApellido;
     private javax.swing.JTextField TextNombre;
     private javax.swing.JTextField TextTelefono;
@@ -316,5 +321,6 @@ public class RegistroHuesped extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator4;
     private javax.swing.JSeparator jSeparator5;
     private javax.swing.JSeparator jSeparator6;
+    private com.toedter.calendar.JDateChooser jDateChooser1;
     // End of variables declaration//GEN-END:variables
 }
