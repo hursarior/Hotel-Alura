@@ -25,7 +25,7 @@ En esta ventana se presenta las opciones cuando el usuario autenticado está den
 
 Ademas de que siempre presenta la fecha del dia actual al operador.
 
-<video src="2023-09-20%2010-33-46.mp4" controls title="Reservación"></video>
+![Reservación](<2023-09-20 10-33-46.gif>)
 
 La ventana de Reservas debe permitir al usuário registrar los siguientes datos:
 
@@ -34,11 +34,11 @@ La ventana de Reservas debe permitir al usuário registrar los siguientes datos:
 
 
 
-<video src="2023-09-20%2010-34-52.mp4" controls title="Huesped"></video>
+![Huesped](<2023-09-20 10-34-52.gif>)
 
 En esta ventana colocamos los datos del huesped para terminar con la reservación. 
 
-<video src="2023-09-20%2010-36-29.mp4" controls title="Busqueda"></video>
+![Busqueda](<2023-09-20 10-36-29.gif>)
 
 Esta es la ventana mas dinamica, aqui realizamos todas las operaciones de busqueda, edición y eliminación de datos.
 
