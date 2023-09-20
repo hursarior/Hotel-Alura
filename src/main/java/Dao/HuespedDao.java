@@ -8,9 +8,7 @@ import javax.persistence.EntityManager;
 
 import Conexion.Conn;
 import Model.Huesped;
-import Model.Nacionalidad;
-import Model.Reserva;
-import net.bytebuddy.asm.Advice.Local;
+
 
 public class HuespedDao {
     Conn conn = new Conn();

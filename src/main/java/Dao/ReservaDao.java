@@ -5,7 +5,6 @@ import java.util.List;
 import javax.persistence.EntityManager;
 
 import Conexion.Conn;
-import Model.Huesped;
 import Model.Reserva;
 
 public class ReservaDao {

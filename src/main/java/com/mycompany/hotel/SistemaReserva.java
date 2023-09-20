@@ -223,26 +223,33 @@ public class SistemaReserva extends javax.swing.JFrame {
 
     
     private void BtnContinuaMouseClicked(java.awt.event.MouseEvent evt) {
-
         Date fecha1 = jDateChooser1.getDate();
         Date fecha2 = jDateChooser2.getDate();
-
-        if(fecha1 != null && fecha2 != null){
-        LocalDate localDate = fecha1.toInstant().atZone(ZoneId.systemDefault()).toLocalDate(); ;
-        LocalDate localDate2 = fecha2.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();;
-        diasDiferencia = ChronoUnit.DAYS.between(localDate, localDate2);
-        this.reservacion = new Reserva(localDate, localDate2, new BigDecimal((diasDiferencia * 50)), formaPagoSeleccionada);
-        RegistroHuesped in = new RegistroHuesped(reservacion);
-        in.setVisible(true);
-        this.dispose();
-
+        
+        if (fecha1 == null || fecha2 == null) {
+            JOptionPane.showMessageDialog(null, "Debe seleccionar ambas fechas.");
         } else {
 
-            JOptionPane.showMessageDialog(null, "Debe llenar todos los campos");
-        
+            LocalDate localDate = fecha1.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+            LocalDate localDate2 = fecha2.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+    
+            if (localDate == localDate2) {
+                JOptionPane.showMessageDialog(null, "Solo reservamos por día, por favor colocar una fecha coherente.");
+            } else if (localDate.isBefore(localDate2)) {
+                JOptionPane.showMessageDialog(null, "La reservación no tiene sentido, las fechas están invertidas.");
+            } else {
+
+                diasDiferencia = ChronoUnit.DAYS.between(localDate, localDate2);
+                BigDecimal valorReserva = new BigDecimal(diasDiferencia * 50).abs();
+                this.reservacion = new Reserva(localDate, localDate2, valorReserva, formaPagoSeleccionada);
+                RegistroHuesped in = new RegistroHuesped(reservacion);
+                in.setVisible(true);
+                this.dispose();
+               
+            }
         }
-      
     }
+    
 
     public String valor(){
 

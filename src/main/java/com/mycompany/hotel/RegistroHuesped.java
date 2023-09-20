@@ -5,20 +5,14 @@
 package com.mycompany.hotel;
 
 import java.awt.Color;
-import java.awt.event.ActionEvent;
-import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.ZoneId;
-import java.time.temporal.ChronoUnit;
-
 import com.toedter.calendar.JDateChooser;
 
 import Dao.HuespedDao;
-import Dao.ReservaDao;
 import Model.Huesped;
 import Model.Nacionalidad;
 import Model.Reserva;
-import views.TextPrompt;
 
 /**
  *

@@ -1,5 +1,6 @@
 package Model;
 
+
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
@@ -32,7 +33,7 @@ public class Reserva {
     public Long getReserva_id() {
         return reserva_id;
     }
-
+    
 
     @Getter @Setter
     private LocalDate chechin;
@@ -47,6 +48,7 @@ public class Reserva {
     private FormasPago Forma_pago;
     
 
+
     public Reserva( LocalDate chechin, LocalDate checkout, BigDecimal valor_reserva,
         Object object) {
             
@@ -54,9 +56,7 @@ public class Reserva {
         this.checkout = checkout;
         this.valor_reserva = valor_reserva;
         this.Forma_pago = (FormasPago) object;
-
     }
-
 
     
 }
